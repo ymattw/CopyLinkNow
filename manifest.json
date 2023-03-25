@@ -1,0 +1,15 @@
+{
+  "name": "CopyLinkNow",
+  "version": "0.1",
+  "manifest_version": 3,
+  "description": "Hold Contol and mouse over a link to copy its inner text, hold Alt to copy URL, hold Meta (or ⌘) to copy as markdown",
+  "permissions": [
+    "clipboardWrite"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js"]
+    }
+  ]
+}
