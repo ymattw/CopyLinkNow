@@ -1,18 +1,23 @@
 # CopyLinkNow
 
 Chrome extension mostly authored by ChatGPT lets you simply copy a link (text,
-url, or as markdown) while holding a modifier key.
+URL, or as markdown) by pressing and releasing a key while mouse over a link.
 
-## Usage
+- Press and release Control to copy inner text
+- Press and release Alt to copy URL
+- Press and release Meta (⌘) to copy as markdown
+
+Sorry no option page is implemented.
+
+## Install
 
 1. Clone to your disk
 2. Open Chrome, access URL `chrome://extensions/`
 3. Switch on `Developer mode` at the top right corner
 4. Hit button `Load unpacked` and load the this extension from your disk
-5. Open a web site, mouse over a link while holding the modifier key mentioned
-   in description.
+5. Open a web site, mouse over a link, press and release the modifier key
+   mentioned above.
 
-## version 0.1
+## Debug
 
-- Hold Contol and mouse over a link to copy its inner text, hold Alt to copy
-  URL, hold Meta (or ⌘) to copy as markdown
+Check console logs for internal behavior.

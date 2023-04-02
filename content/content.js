@@ -1,40 +1,50 @@
-let linkElement = null;
+// Whether was pointer clicked between a keydown and a keyup event.
+let pointerClicked = false;
+
+function onClick(e) {
+  pointerClicked = true;
+}
 
 function onKeydown(e) {
-  if (["Control", "Alt", "Meta"].includes(e.key)) {
-    linkElement = null;
-    document.addEventListener("mousemove", onMousemove);
-  }
+  pointerClicked = false;
 }
 
 function onKeyup(e) {
-  if (!linkElement) {
+  if (pointerClicked) {
+    console.log("🤔 Pointer was cicked while key was held, skip copying");
+    return;
+  }
+
+  link = document.querySelector('a:hover');
+  if (!link) {
+    console.log("🤔 No link found under pointer");
+    return;
+  }
+
+  selection = window.getSelection();
+  if (selection.type === "Range" && link.contains(selection.anchorNode)) {
+    console.log("🤔 User already selected the link, skip copying");
     return;
   }
 
   var text = "";
   if (e.key == "Control") {
-    text = linkElement.innerText;
+    text = link.innerText;
   }
   else if (e.key == "Alt") {
-    text = linkElement.href;
+    text = link.href;
   }
   else if (e.key == "Meta") {
-    text = `[${linkElement.innerText}](${linkElement.href})`;
+    text = `[${link.innerText}](${link.href})`;
   }
   if (text != "") {
-    console.log("Copying: " + text);
-    document.removeEventListener("mousemove", onMousemove);
+    console.log("📋 " + text);
     navigator.clipboard.writeText(text);
-    blinkElement(linkElement);
+    blinkElement(link);
   }
 }
 
-function onMousemove(e) {
-  linkElement = e.target.closest('a');
-}
-
-// Blink the element by inverting its color
+// Blink the element by inverting its color and then reset
 function blinkElement(element) {
   var prevFilter = element.style.filter;
   element.style.filter = 'invert(100%)';
@@ -43,5 +53,6 @@ function blinkElement(element) {
   }, 100);
 }
 
+document.addEventListener("click", onClick);
 document.addEventListener("keydown", onKeydown);
 document.addEventListener("keyup", onKeyup);
