@@ -21,3 +21,8 @@ Sorry no option page is implemented.
 ## Debug
 
 Check console logs for internal behavior.
+
+## Note for internal publishing
+
+Search `manifest.json goend` to find the magic `key` for publishing to the
+internal store.
