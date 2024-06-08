@@ -1,8 +1,8 @@
 {
   "name": "CopyLinkNow",
-  "version": "0.2",
+  "version": "0.3",
   "manifest_version": 3,
-  "description": "Press and release Control while mouse over a link to copy its inner text, Alt to copy URL, Meta (⌘) to copy as markdown",
+  "description": "Press and release Meta (⌘) while mouse over a link to copy its inner text, Ctrl to copy URL, Alt to copy as markdown",
   "permissions": [
     "clipboardWrite"
   ],

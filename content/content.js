@@ -28,13 +28,13 @@ function onKeyup(e) {
   }
 
   var text = "";
-  if (e.key == "Control") {
+  if (e.key == "Meta") {
     text = link.innerText;
   }
-  else if (e.key == "Alt") {
+  else if (e.key == "Control") {
     text = link.href;
   }
-  else if (e.key == "Meta") {
+  else if (e.key == "Alt") {
     text = `[${link.innerText}](${link.href})`;
   }
   if (text != "") {
